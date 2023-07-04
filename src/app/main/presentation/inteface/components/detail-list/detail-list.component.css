@@ -1,0 +1,141 @@
+
+@media only screen and (min-width: 768px) {
+    .nav {
+      height: 80%;
+      overflow: scroll;
+    }
+  }
+  .transition,
+  ul li i:before,
+  ul li i:after,
+  p {
+    transition: all 0.25s ease-in-out;
+  }
+  
+  .flipIn,
+  ul li {
+    animation: flipdown 0.5s ease both;
+  }
+  
+  .no-select,
+  h3 {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  h3 {
+    color: #504a4a;
+  }
+  
+  h3 {
+    line-height: 34px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: block;
+    margin: 0;
+    cursor: pointer;
+  }
+  
+  p {
+    color: rgba(48, 69, 92, 0.8);
+    font-size: 17px;
+    line-height: 26px;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    max-height: 800px;
+    opacity: 1;
+    transform: translate(0, 0);
+    margin-top: 14px;
+    z-index: 2;
+  }
+  
+  ul {
+    list-style: none;
+    perspective: 900;
+    padding: 0;
+    margin: 0;
+  }
+  ul li {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    padding-bottom: 4px;
+    padding-top: 18px;
+    border-top: 1px dotted #dce7eb;
+  }
+  
+  
+  ul li:last-of-type {
+    padding-bottom: 0;
+  }
+  ul li i {
+    position: absolute;
+    transform: translate(-6px, 0);
+    margin-top: 16px;
+    right: 15px;
+  }
+  ul li i:before,
+  ul li i:after {
+    content: "";
+    position: absolute;
+    background-color: #504a4a;
+    width: 3px;
+    height: 9px;
+  }
+  ul li i:before {
+    transform: translate(-2px, 0) rotate(45deg);
+  }
+  ul li i:after {
+    transform: translate(2px, 0) rotate(-45deg);
+  }
+  ul li input[type="checkbox"] {
+    position: absolute;
+    cursor: pointer;
+    width: 50%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+  }
+  ul li input[type="checkbox"]:checked ~ p {
+    margin-top: 0;
+    max-height: 0;
+    opacity: 0;
+    transform: translate(0, 50%);
+  }
+  ul li input[type="checkbox"]:checked ~ i:before {
+    transform: translate(2px, 0) rotate(45deg);
+  }
+  ul li input[type="checkbox"]:checked ~ i:after {
+    transform: translate(-2px, 0) rotate(-45deg);
+  }
+  
+  @keyframes flipdown {
+    0% {
+      opacity: 0;
+      transform-origin: top center;
+      transform: rotateX(-90deg);
+    }
+    5% {
+      opacity: 1;
+    }
+    80% {
+      transform: rotateX(8deg);
+    }
+    83% {
+      transform: rotateX(6deg);
+    }
+    92% {
+      transform: rotateX(-3deg);
+    }
+    100% {
+      transform-origin: top center;
+      transform: rotateX(0deg);
+    }
+  }
+  

@@ -1,0 +1,68 @@
+<div class="title">
+  <h1>{{ title }}</h1>
+</div>
+<div class="content info">
+  <div class="table">
+    <h2>List</h2>
+    <ng-select *ngIf="pokemons"
+    [items]="pokemonsBuffer"
+    [virtualScroll]="true"
+    [loading]="loadingScroll"
+    bindLabel="name"
+    bindValue="name"
+    placeholder="Select pokmemon"
+    appendTo="body"
+    (change)="changeFn($event)"
+    (scroll)="onScroll($event)"
+    (scrollToEnd)="onScrollToEnd()"
+  >
+    <ng-template ng-header-tmp>
+      <small class="form-text text-muted"
+        >Loaded {{ pokemonsBuffer.length }} of {{ pokemons.length }}</small
+      >
+    </ng-template>
+    <ng-template ng-option-tmp let-item="item" let-index="index">
+      <b>{{ index }}</b> {{ item.name }}
+    </ng-template>
+  </ng-select>
+  <hr>
+    <ngx-datatable
+      class="material"
+      [scrollbarH]="true"
+      [rows]="rows"
+      [columns]="[{ name: 'name' }, { name: 'url' }]"
+      [columnMode]="ColumnMode.force"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      rowHeight="auto"
+      [externalPaging]="true"
+      [count]="page.totalElements"
+      [offset]="page.pageNumber"
+      [limit]="page.size"
+      (page)="get($event)"
+      [loadingIndicator]="loading"
+      [selected]="selected"
+      [selectionType]="SelectionType.single"
+      (select)="onSelect()"
+    >
+    </ngx-datatable>
+  </div>
+  <div class="detail">
+    <h2>Detail</h2>
+    <app-detail-list [details]="details"></app-detail-list>
+    <span *ngIf="!details" class="empty">{{empty}}</span>
+  </div>
+</div>
+<div class="content summary" *ngIf="pokemonList">
+  <h2>Summary</h2>
+  <ngx-datatable
+    class="material"
+    [rows]="pokemonList"
+    [columns]="[{ name: 'letter' }, { name: 'count' }]"
+    [columnMode]="ColumnMode.force"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    rowHeight="auto"
+  >
+  </ngx-datatable>
+</div>

@@ -1,0 +1,115 @@
+<ul *ngIf="this.details" class="nav">
+    <li *ngFor="let key of getObjectKeys(this.details)">
+      <input type="checkbox" checked />
+      <i></i>
+      <h3>{{ key }}</h3>
+      <p>
+        <li>{{ isObject(details[key]) ? "" : details[key] }}</li>
+        <span *ngIf="isArray(details[key])">
+          <span *ngFor="let item of details[key]">
+            <span *ngIf="isObject(item)">
+              <span *ngFor="let prop of getObjectKeys(item)">
+                <li>
+                  {{ prop }}
+                  {{ isObject(item[prop]) ? "" : ":" + item[prop] }}
+                </li>
+                <span *ngIf="isObject(item[prop])">
+                  <span *ngFor="let subProp of getObjectKeys(item[prop])">
+                    <li>
+                      {{ subProp }}
+                      {{
+                        isObject(item[prop][subProp])
+                          ? ""
+                          : ":" + item[prop][subProp]
+                      }}
+                    </li>
+                    <span *ngIf="isObject(item[prop][subProp])">
+                      <span
+                        *ngFor="
+                          let subFirstProp of getObjectKeys(
+                            item[prop][subProp]
+                          )
+                        "
+                      >
+                        <li>
+                          {{ subFirstProp }}
+                          {{
+                            isObject(item[prop][subProp][subFirstProp])
+                              ? ""
+                              : ":" + item[prop][subProp][subFirstProp]
+                          }}
+                        </li>
+                        <span
+                          *ngIf="isObject(item[prop][subProp][subFirstProp])"
+                        >
+                          <span
+                            *ngFor="
+                              let subSecondsProp of getObjectKeys(
+                                item[prop][subProp][subFirstProp]
+                              )
+                            "
+                          >
+                            <li>
+                              {{ subSecondsProp }}
+                              {{
+                                isObject(
+                                  item[prop][subProp][subFirstProp][
+                                    subSecondsProp
+                                  ]
+                                )
+                                  ? ""
+                                  : ":" +
+                                    item[prop][subProp][subFirstProp][
+                                      subSecondsProp
+                                    ]
+                              }}
+                            </li>
+                            <span
+                              *ngIf="
+                                isObject(
+                                  item[prop][subProp][subFirstProp][
+                                    subSecondsProp
+                                  ]
+                                )
+                              "
+                            >
+                              <span
+                                *ngFor="
+                                  let subThirdProp of getObjectKeys(
+                                    item[prop][subProp][subFirstProp][
+                                      subSecondsProp
+                                    ]
+                                  )
+                                "
+                              >
+                                <li>
+                                  {{ subThirdProp }}
+                                  {{
+                                    isObject(
+                                      item[prop][subProp][subFirstProp][
+                                        subSecondsProp
+                                      ][subThirdProp]
+                                    )
+                                      ? ""
+                                      : ":" +
+                                        item[prop][subProp][subFirstProp][
+                                          subSecondsProp
+                                        ][subThirdProp]
+                                  }}
+                                </li>
+                              </span>
+                            </span>
+                          </span>
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </span>
+          </span>
+        </span>
+      </p>
+    </li>
+
+</ul>

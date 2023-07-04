@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@ng-select/ng-select/themes/default.theme.css";
+
+.ng-dropdown-panel.ng-select-bottom {
+    margin-top: 21px !important;
+    margin-left: 9px !important;
+}

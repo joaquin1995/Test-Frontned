@@ -1,0 +1,38 @@
+.title {
+  text-align: center;
+}
+.empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center;
+}
+.content {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+div h2 {
+  text-align: center;
+}
+
+.summary {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  .info {
+    display: grid;
+    grid-template-columns: 50% 50%;
+ 
+    column-gap: 3rem;
+  }
+   .detail{
+    height: 460px;
+   }
+  .nav {
+    height: 80%;
+    overflow: scroll;
+  }
+}
